@@ -1,8 +1,12 @@
 <template>
-  <h1>Hello world!</h1>
+  <h1>{{ recipeStore.mainTitle }}</h1>
 </template>
 
-<script setup></script>
+<script setup>
+import { useRecipeStore } from "./stores/useRecipeStore";
+
+const recipeStore = useRecipeStore();
+</script>
 
 <style>
 #app {
