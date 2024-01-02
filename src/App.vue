@@ -3,9 +3,14 @@
 </template>
 
 <script setup>
+import { onMounted } from "vue";
 import { useRecipeStore } from "./stores/useRecipeStore";
 
 const recipeStore = useRecipeStore();
+
+onMounted(() => {
+  recipeStore.fetchRecipes();
+});
 </script>
 
 <style>
