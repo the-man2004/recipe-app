@@ -1,7 +1,26 @@
 <template>
   <div class="header">
     <nav>
-      <router-link to="/">Home</router-link>
+      <router-link class="link" to="/">Home</router-link>
+      <div class="links-container">
+        <router-link class="link category-link" to="/">Dessert</router-link>
+        <router-link class="link category-link" to="/">Chicken</router-link>
+        <router-link class="link category-link" to="/">Beef</router-link>
+        <router-link class="link category-link" to="/">Seafood</router-link>
+        <router-link class="link category-link" to="/">Vegan</router-link>
+        <router-link class="link category-link" to="/">Breakfast</router-link>
+      </div>
+      <div class="social-links">
+        <a href="https://facebook.com">
+          <i class="fa-brands fa-facebook link"></i>
+        </a>
+        <a href="https://instagram.com">
+          <i class="fa-brands fa-instagram link"></i>
+        </a>
+        <a href="https://pinterest.com">
+          <i class="fa-brands fa-pinterest link"></i>
+        </a>
+      </div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -32,18 +51,51 @@ nav {
   max-width: 80rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
-a {
+.links-container {
+  display: none;
+}
+
+.link {
   color: var(--secondary-color);
   text-decoration: none;
 }
 
+.social-links {
+  display: none;
+}
+
+.category-link::after {
+  content: ">";
+  font-size: 0.8rem;
+  margin-left: 0.4rem;
+}
+
 .burger-menu {
+  margin-left: auto;
   width: 2rem;
   height: 2rem;
-  margin: 0;
   cursor: pointer;
+}
+
+@media (min-width: 60rem) {
+  nav {
+    justify-content: space-between;
+  }
+  .burger-menu {
+    display: none;
+  }
+
+  .links-container {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .social-links {
+    font-size: 1.2rem;
+    display: flex;
+    gap: 0.5rem;
+  }
 }
 </style>
