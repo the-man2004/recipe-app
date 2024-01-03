@@ -25,6 +25,7 @@ onMounted(() => {
 :root {
   --primary-color: black;
   --secondary-color: white;
+  --dark-color: rgb(36, 36, 36);
 }
 
 html {
