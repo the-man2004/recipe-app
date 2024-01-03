@@ -1,0 +1,9 @@
+<template>
+  <nav>
+    <a href="">Home</a>
+    <a href="">Home</a>
+    <a href="">Home</a>
+    <a href="">Home</a>
+    <a href="">Home</a>
+  </nav>
+</template>
