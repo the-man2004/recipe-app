@@ -65,6 +65,14 @@ nav {
   text-decoration: none;
 }
 
+.category-link {
+  transition: all 200ms ease;
+}
+.category-link:hover {
+  color: var(--accent-color);
+  transform: translateY(0.15rem);
+}
+
 .home-link {
   font-weight: 800;
   text-decoration: underline;
