@@ -68,7 +68,8 @@ nav {
 .category-link {
   transition: all 200ms ease;
 }
-.category-link:hover {
+.category-link:hover,
+.category-link:focus {
   color: var(--accent-color);
   transform: translateY(0.15rem);
 }
