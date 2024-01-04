@@ -1,14 +1,17 @@
 <template>
   <div class="header">
     <nav>
-      <router-link class="link" to="/">Home</router-link>
+      <router-link class="link home-link" to="/">Home</router-link>
       <div class="links-container">
         <router-link class="link category-link" to="/">Dessert</router-link>
+        <router-link class="link category-link" to="/">Breakfast</router-link>
+        <router-link class="link category-link" to="/">Seafood</router-link>
+        <router-link class="link category-link" to="/">Starter</router-link>
+        <router-link class="link category-link" to="/">Side</router-link>
+        <router-link class="link category-link" to="/">Vegan</router-link>
         <router-link class="link category-link" to="/">Chicken</router-link>
         <router-link class="link category-link" to="/">Beef</router-link>
-        <router-link class="link category-link" to="/">Seafood</router-link>
-        <router-link class="link category-link" to="/">Vegan</router-link>
-        <router-link class="link category-link" to="/">Breakfast</router-link>
+        <router-link class="link category-link" to="/">Pasta</router-link>
       </div>
       <div class="social-links">
         <a href="https://facebook.com">
@@ -62,14 +65,14 @@ nav {
   text-decoration: none;
 }
 
-.social-links {
-  display: none;
+.home-link {
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
 }
 
-.category-link::after {
-  content: ">";
-  font-size: 0.8rem;
-  margin-left: 0.4rem;
+.social-links {
+  display: none;
 }
 
 .burger-menu {
