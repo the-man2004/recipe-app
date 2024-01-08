@@ -33,6 +33,7 @@ onMounted(() => {
 
 html {
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
