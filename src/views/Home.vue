@@ -1,6 +1,8 @@
 <template>
   <div class="hero">
-    <h1 class="hero-title">Delicious Foods</h1>
+    <router-link to="/">
+      <h1 class="hero-title">Delicious Foods</h1>
+    </router-link>
   </div>
 </template>
 
@@ -16,6 +18,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+a {
+  text-decoration: none;
 }
 
 .hero-title {
