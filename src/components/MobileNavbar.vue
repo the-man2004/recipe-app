@@ -9,7 +9,7 @@
       <div v-if="isNavOpen" @click="toggleModal" class="backdrop"></div>
     </transition>
     <transition name="slide-in">
-      <nav v-if="isNavOpen">
+      <nav v-if="isNavOpen" @click="handleClick($event)">
         <div>
           <router-link class="link home-link" to="/"
             >Delicious Foods</router-link
@@ -46,10 +46,16 @@
 <script setup>
 import { ref } from "vue";
 
-const isNavOpen = ref(true);
+const isNavOpen = ref(false);
 
 const toggleModal = () => {
   isNavOpen.value = !isNavOpen.value;
+};
+
+const handleClick = (event) => {
+  if (event.target.nodeName === "A") {
+    toggleModal();
+  }
 };
 </script>
 
