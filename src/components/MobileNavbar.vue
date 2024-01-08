@@ -4,35 +4,43 @@
     <div class="bar"></div>
     <div class="bar"></div>
   </div>
-  <div v-if="isNavOpen" @click="toggleModal" class="backdrop"></div>
-  <nav v-if="isNavOpen">
-    <div>
-      <router-link class="link home-link" to="/">Delicious Foods</router-link>
-    </div>
-    <div class="category-links">
-      <router-link class="link category-link" to="/">Home</router-link>
-      <router-link class="link category-link" to="/">Dessert</router-link>
-      <router-link class="link category-link" to="/">Breakfast</router-link>
-      <router-link class="link category-link" to="/">Seafood</router-link>
-      <router-link class="link category-link" to="/">Starter</router-link>
-      <router-link class="link category-link" to="/">Side</router-link>
-      <router-link class="link category-link" to="/">Vegan</router-link>
-      <router-link class="link category-link" to="/">Chicken</router-link>
-      <router-link class="link category-link" to="/">Beef</router-link>
-      <router-link class="link category-link" to="/">Pasta</router-link>
-    </div>
-    <div class="social-links">
-      <a href="https://facebook.com">
-        <i class="fa-brands fa-facebook link"></i>
-      </a>
-      <a href="https://instagram.com">
-        <i class="fa-brands fa-instagram link"></i>
-      </a>
-      <a href="https://pinterest.com">
-        <i class="fa-brands fa-pinterest link"></i>
-      </a>
-    </div>
-  </nav>
+  <teleport to="body">
+    <transition name="fade-in">
+      <div v-if="isNavOpen" @click="toggleModal" class="backdrop"></div>
+    </transition>
+    <transition name="slide-in">
+      <nav v-if="isNavOpen">
+        <div>
+          <router-link class="link home-link" to="/"
+            >Delicious Foods</router-link
+          >
+        </div>
+        <div class="category-links">
+          <router-link class="link category-link" to="/">Home</router-link>
+          <router-link class="link category-link" to="/">Dessert</router-link>
+          <router-link class="link category-link" to="/">Breakfast</router-link>
+          <router-link class="link category-link" to="/">Seafood</router-link>
+          <router-link class="link category-link" to="/">Starter</router-link>
+          <router-link class="link category-link" to="/">Side</router-link>
+          <router-link class="link category-link" to="/">Vegan</router-link>
+          <router-link class="link category-link" to="/">Chicken</router-link>
+          <router-link class="link category-link" to="/">Beef</router-link>
+          <router-link class="link category-link" to="/">Pasta</router-link>
+        </div>
+        <div class="social-links">
+          <a href="https://facebook.com">
+            <i class="fa-brands fa-facebook link"></i>
+          </a>
+          <a href="https://instagram.com">
+            <i class="fa-brands fa-instagram link"></i>
+          </a>
+          <a href="https://pinterest.com">
+            <i class="fa-brands fa-pinterest link"></i>
+          </a>
+        </div>
+      </nav>
+    </transition>
+  </teleport>
 </template>
 
 <script setup>
@@ -66,6 +74,28 @@ const toggleModal = () => {
   background: var(--primary-color);
   opacity: 0.4;
   cursor: pointer;
+}
+
+/* Backdrop transition classes */
+.fade-in-enter-active,
+.fade-in-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-in-enter-from,
+.fade-in-leave-to {
+  opacity: 0;
+}
+
+/* Navbar transition classes */
+.slide-in-enter-active,
+.slide-in-leave-active {
+  transition: all 0.5s ease-in-out;
+}
+
+.slide-in-enter-from,
+.slide-in-leave-to {
+  transform: translateX(400px);
 }
 
 nav {
