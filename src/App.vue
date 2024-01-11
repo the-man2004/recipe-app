@@ -4,15 +4,7 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
-import { useRecipeStore } from "./stores/useRecipeStore";
 import TheHeader from "./components/TheHeader.vue";
-
-const recipeStore = useRecipeStore();
-
-onMounted(() => {
-  recipeStore.fetchRecipes();
-});
 </script>
 
 <style>
@@ -33,7 +25,7 @@ onMounted(() => {
 
 html {
   height: 100%;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 body {
