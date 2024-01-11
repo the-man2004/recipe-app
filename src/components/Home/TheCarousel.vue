@@ -1,14 +1,21 @@
 <template>
-  <div class="carousel-container">
+  <div v-if="recipes" class="carousel-container">
     <ul class="carousel">
       <carousel-item
         v-for="recipe in recipes"
         :recipe="recipe"
         :key="recipe.idMeal"
-        ref="listOfRecipes"
         class="carouselItem"
       />
     </ul>
+    <div class="button-container">
+      <button @click="moveLeft">
+        <i class="fa-solid fa-arrow-left"></i>
+      </button>
+      <button @click="moveRight">
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
   </div>
 </template>
 
@@ -21,37 +28,47 @@ const recipeStore = useRecipeStore();
 
 const recipes = computed(() => recipeStore.miscellaneousRecipes);
 
-const listOfRecipes = ref([]);
+let num = ref(0);
 
-onMounted(() => {
-  let num = 100;
+const moveRight = () => {
+  const recipes = document.querySelectorAll(".carouselItem");
 
-  setInterval(() => {
-    const recipes = document.querySelectorAll(".carouselItem");
+  const maxMoves = recipes.length - 4;
 
-    const maxMoves = recipes.length - 3;
+  if (num.value / 100 === maxMoves) {
+    num.value = 0;
+    recipes.forEach((recipe) => {
+      recipe.style.transform = `translateX(0)`;
+    });
+  } else {
+    num.value += 100;
+    recipes.forEach((recipe) => {
+      recipe.style.transform = `translateX(-${num.value}%)`;
+    });
+  }
 
-    if (num / 100 === maxMoves) {
-      num = 100;
-      recipes.forEach((recipe) => {
-        // recipe.style.border = "2px solid red";
-        recipe.style.transform = `translateX(0)`;
-      });
-    } else {
-      recipes.forEach((recipe) => {
-        // recipe.style.border = "2px solid red";
-        recipe.style.transform = `translateX(-${num}%)`;
-      });
-      num += 100;
-    }
-    // setTimeout(() => {
-    //   recipes.forEach((recipe) => {
-    //     recipe.style.border = "2px solid green";
-    //     recipe.style.transform = `translateX(-${num}%)`;
-    //   });
-    // }, 2000);
-  }, 3000);
-});
+  console.log(num.value);
+};
+
+const moveLeft = () => {
+  const recipes = document.querySelectorAll(".carouselItem");
+
+  const maxMoves = recipes.length - 3;
+
+  if (num.value === 0) {
+    num.value = maxMoves * 100;
+    recipes.forEach((recipe) => {
+      recipe.style.transform = `translateX(${num.value})`;
+    });
+  } else {
+    num.value -= 100;
+    recipes.forEach((recipe) => {
+      recipe.style.transform = `translateX(-${num.value}%)`;
+    });
+  }
+
+  console.log(num.value);
+};
 </script>
 
 <style scoped>
@@ -60,7 +77,7 @@ onMounted(() => {
 }
 
 .carousel-container {
-  margin: 1.5rem 3rem;
+  margin: 2rem 3rem;
   display: none;
 }
 
@@ -74,6 +91,36 @@ onMounted(() => {
   display: flex;
 
   overflow-x: hidden;
+}
+
+.button-container {
+  margin: 2rem auto;
+  padding: 0;
+  max-width: 80rem;
+  display: flex;
+  gap: 1rem;
+}
+
+button {
+  background: var(--primary-color);
+  border: none;
+
+  aspect-ratio: 1 / 1;
+  border-radius: 10rem;
+  outline: 2px solid var(--dark-color);
+
+  padding: 0 0.8rem;
+
+  color: var(--accent-color);
+  font-size: 1.5rem;
+
+  transition: color 300ms ease;
+}
+
+button:hover,
+button:focus {
+  background: var(--accent-color);
+  color: var(--dark-color);
 }
 
 @media (min-width: 60rem) {

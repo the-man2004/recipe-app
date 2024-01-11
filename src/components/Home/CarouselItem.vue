@@ -1,7 +1,7 @@
 <template>
   <li>
     <img :src="props.recipe.strMealThumb" alt="" />
-    <p>Hello</p>
+    <!-- <p>Hello</p> -->
   </li>
 </template>
 
