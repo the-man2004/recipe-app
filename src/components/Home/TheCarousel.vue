@@ -35,7 +35,7 @@ const moveRight = () => {
 
   const maxMoves = recipes.length - 4;
 
-  if (num.value / 100 === maxMoves) {
+  if (num.value / 100 >= maxMoves) {
     num.value = 0;
     recipes.forEach((recipe) => {
       recipe.style.transform = `translateX(0)`;
