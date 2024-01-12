@@ -8,19 +8,17 @@
         class="carouselItem"
       />
     </ul>
-    <div class="button-container">
-      <button @click="moveLeft">
-        <i class="fa-solid fa-arrow-left"></i>
-      </button>
-      <button @click="moveRight">
-        <i class="fa-solid fa-arrow-right"></i>
-      </button>
-    </div>
+    <button @click="moveLeft" class="btn-left">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <button @click="moveRight" class="btn-right">
+      <i class="fa-solid fa-arrow-right"></i>
+    </button>
   </div>
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { computed, ref } from "vue";
 import { useRecipeStore } from "../../stores/useRecipeStore";
 import CarouselItem from "./CarouselItem.vue";
 
@@ -72,20 +70,19 @@ const moveLeft = () => {
 </script>
 
 <style scoped>
-.test {
-  color: white;
-}
-
 .carousel-container {
-  margin: 2rem 3rem;
+  margin: 2rem auto;
+  padding: 0 6rem;
+  max-width: 80rem;
   display: none;
+  position: relative;
 }
 
 .carousel {
   /* background: white; */
   margin: 0 auto;
   padding: 0;
-  max-width: 80rem;
+  width: 100%;
   /* height: 20rem; */
 
   display: flex;
@@ -93,34 +90,49 @@ const moveLeft = () => {
   overflow-x: hidden;
 }
 
-.button-container {
-  margin: 2rem auto;
-  padding: 0;
-  max-width: 80rem;
-  display: flex;
-  gap: 1rem;
-}
-
 button {
   background: var(--primary-color);
-  border: none;
+  border: 2px solid var(--primary-color);
+  /* outline: none; */
+  cursor: pointer;
 
   aspect-ratio: 1 / 1;
   border-radius: 10rem;
-  outline: 2px solid var(--dark-color);
 
   padding: 0 0.8rem;
 
   color: var(--accent-color);
   font-size: 1.5rem;
 
-  transition: color 300ms ease;
+  transition: all 300ms ease;
 }
 
-button:hover,
-button:focus {
-  background: var(--accent-color);
-  color: var(--dark-color);
+.btn-left {
+  position: absolute;
+  top: 50%;
+  left: 2rem;
+  transform: translateY(-50%);
+}
+
+.btn-right {
+  position: absolute;
+  top: 50%;
+  right: 2rem;
+  transform: translateY(-50%);
+}
+
+button:hover {
+  transform: translateX(-2px) translateY(-50%);
+}
+
+.btn-left:hover,
+.btn-left:focus {
+  transform: translateX(-5px) translateY(-50%);
+}
+
+.btn-right:hover,
+.btn-right:focus {
+  transform: translateX(5px) translateY(-50%);
 }
 
 @media (min-width: 60rem) {
