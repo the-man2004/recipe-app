@@ -46,6 +46,8 @@ export const useRecipeStore = defineStore("recipeStore", {
       } catch (err) {
         console.warn(err);
       }
+
+      this.fetchCategory();
     },
   },
 });
