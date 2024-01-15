@@ -1,16 +1,24 @@
 <template>
   <li>
-    <router-link to="/">
-      <img :src="props.recipe.strMealThumb" alt="" />
+    <router-link :to="link">
+      <img :src="thumbnail" alt="" />
       <div class="title-container">
-        <p>{{ props.recipe.strMeal }}</p>
+        <p>{{ title }}</p>
       </div>
     </router-link>
   </li>
 </template>
 
 <script setup>
+import { computed } from "vue";
+
 const props = defineProps(["recipe"]);
+
+const link = computed(() => {
+  return `/recipe/${props.recipe.idMeal}`;
+});
+const thumbnail = computed(() => props.recipe.strMealThumb);
+const title = computed(() => props.recipe.strMeal);
 </script>
 
 <style scoped>

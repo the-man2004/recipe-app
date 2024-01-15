@@ -3,15 +3,33 @@
     <nav>
       <router-link class="link home-link" to="/">Home</router-link>
       <div class="links-container">
-        <router-link class="link category-link" to="/">Dessert</router-link>
-        <router-link class="link category-link" to="/">Breakfast</router-link>
-        <router-link class="link category-link" to="/">Seafood</router-link>
-        <router-link class="link category-link" to="/">Starter</router-link>
-        <router-link class="link category-link" to="/">Side</router-link>
-        <router-link class="link category-link" to="/">Vegan</router-link>
-        <router-link class="link category-link" to="/">Chicken</router-link>
-        <router-link class="link category-link" to="/">Beef</router-link>
-        <router-link class="link category-link" to="/">Pasta</router-link>
+        <router-link class="link category-link" to="/recipes/dessert"
+          >Dessert</router-link
+        >
+        <router-link class="link category-link" to="/recipes/breakfast"
+          >Breakfast</router-link
+        >
+        <router-link class="link category-link" to="/recipes/seafood"
+          >Seafood</router-link
+        >
+        <router-link class="link category-link" to="/recipes/starter"
+          >Starter</router-link
+        >
+        <router-link class="link category-link" to="/recipes/side"
+          >Side</router-link
+        >
+        <router-link class="link category-link" to="/recipes/vegan"
+          >Vegan</router-link
+        >
+        <router-link class="link category-link" to="/recipes/chicken"
+          >Chicken</router-link
+        >
+        <router-link class="link category-link" to="/recipes/beef"
+          >Beef</router-link
+        >
+        <router-link class="link category-link" to="/recipes/pasta"
+          >Pasta</router-link
+        >
       </div>
       <div class="social-links">
         <a href="https://facebook.com">
