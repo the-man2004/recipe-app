@@ -100,6 +100,7 @@ h2 {
 
 .category-item p {
   display: block;
+  margin-top: 0rem;
   transition: all 300ms ease;
 }
 
