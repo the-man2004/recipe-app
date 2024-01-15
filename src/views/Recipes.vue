@@ -1,4 +1,5 @@
 <template>
+  <basic-hero />
   <div class="recipes-container">
     <h2>Recipes</h2>
     <p>{{ props.id }}</p>
@@ -6,9 +7,9 @@
 </template>
 
 <script setup>
-const props = defineProps(["id"]);
+import BasicHero from "../components/BasicHero.vue";
 
-console.log(props.id);
+const props = defineProps(["id"]);
 </script>
 
 <style scoped>
