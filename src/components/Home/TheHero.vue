@@ -8,6 +8,7 @@
 
 <style scoped>
 .hero {
+  margin-top: 4rem;
   height: 25vw;
   min-height: 10rem;
   max-height: 25rem;

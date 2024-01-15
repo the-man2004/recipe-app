@@ -113,6 +113,8 @@ nav {
   max-width: 25rem;
   height: 100vh;
 
+  z-index: 150;
+
   background: var(--secondary-color);
 }
 

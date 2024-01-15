@@ -36,6 +36,11 @@ import MobileNavbar from "./MobileNavbar.vue";
 <style scoped>
 .header {
   background: var(--dark-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
 }
 
 nav {
