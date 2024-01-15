@@ -1,5 +1,5 @@
 <template>
-  <div class="category-contianer">
+  <div class="category-container">
     <h2>Find a recipe for every occasion!</h2>
     <ul>
       <li class="category-item">
@@ -63,31 +63,29 @@
 <style scoped>
 h2 {
   text-align: center;
-  font-size: 2.2rem;
-  margin-bottom: 1.5rem;
+  font-size: clamp(1rem, 5vw, 3rem);
+  margin: 1.5rem 0 2rem 0;
 }
-.category-contianer {
+.category-container {
   padding: 0 1.5rem;
   margin: 0 auto;
   max-width: 80rem;
 }
 
-.category-contianer ul {
+.category-container ul {
   padding: 0;
 }
 
 .category-item {
   list-style: none;
+  margin-bottom: 2rem;
 }
 
 .category-item a {
-  display: grid;
-  grid-template-columns: 2fr 3fr;
   padding: 1.5rem 0;
 
   text-decoration: none;
   color: var(--secondary-color);
-  border-bottom: 2px solid var(--dark-color);
 }
 
 .category-item img {
@@ -95,14 +93,13 @@ h2 {
   margin: 0 auto;
   background: linear-gradient(white, var(--accent-color));
 
+  border-radius: 1rem;
+
   transition: all 750ms ease;
 }
 
 .category-item p {
-  padding-left: 1.5rem;
-  font-size: 1.5rem;
-  margin: auto 0;
-
+  display: block;
   transition: all 300ms ease;
 }
 
@@ -111,5 +108,23 @@ h2 {
 }
 .category-item:hover p {
   transform: translateX(1rem);
+}
+
+@media (min-width: 40rem) {
+  .category-item {
+    margin-bottom: 0;
+  }
+
+  .category-item a {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    border-bottom: 2px solid var(--dark-color);
+  }
+
+  .category-item p {
+    margin: auto 0;
+    font-size: 1.5rem;
+    padding-left: 1.5rem;
+  }
 }
 </style>
