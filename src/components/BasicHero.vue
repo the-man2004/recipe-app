@@ -9,9 +9,9 @@
 <style scoped>
 .hero {
   margin-top: 4rem;
-  height: 25vw;
-  min-height: 10rem;
-  max-height: 25rem;
+  height: 20vw;
+  min-height: 7rem;
+  max-height: 18rem;
   /* background-image: url("../assets/hero-image.jpg"); */
   background-size: cover;
   background-position: center;
