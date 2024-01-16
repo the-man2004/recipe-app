@@ -7,6 +7,7 @@
       </span>
       >> <span>Recipes</span> >> <span>{{ category }}</span>
     </div>
+    <h2 class="category">{{ category }}</h2>
     <div class="recipes-container">
       <h2>Recipes</h2>
       <p>{{ category }}</p>
@@ -46,12 +47,24 @@ const category = computed(
 }
 
 span {
-  font-size: 1.2em;
+  font-size: 1em;
+}
+
+.category {
+  margin: 1rem 0;
+
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 @media (min-width: 40rem) {
   .bread-crumbs {
     font-size: 1.3rem;
+  }
+
+  .category {
+    font-size: 2.5rem;
   }
 }
 </style>
