@@ -4,16 +4,17 @@ export const useRecipeStore = defineStore("recipeStore", {
   state: () => {
     return {
       miscellaneousRecipes: null,
+      categoryRecipes: null,
     };
   },
   getters: {
-    mainTitle: (state) => state.title,
+    categoryRecipesObj: (state) => state.categoryRecipes,
   },
   actions: {
-    async fetchCategory() {
+    async fetchCategory(category) {
       try {
         const response = await fetch(
-          "https://www.themealdb.com/api/json/v1/1/categories.php"
+          `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
         );
 
         if (!response.ok) {
@@ -22,7 +23,8 @@ export const useRecipeStore = defineStore("recipeStore", {
 
         const responseData = await response.json();
 
-        console.log(responseData);
+        this.categoryRecipes = responseData.meals;
+        console.log(this.categoryRecipes);
       } catch (err) {
         console.warn(err);
       }
