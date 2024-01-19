@@ -48,6 +48,9 @@ const recipeTitle = computed(() => props.recipe.strMeal);
   width: 100%;
   height: auto;
 
+  background: var(--dark-color);
+  aspect-ratio: 1 / 1;
+
   transition: all 300ms ease;
 }
 
