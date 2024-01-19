@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from "vue";
+import { computed, onMounted, watch } from "vue";
 import { useRecipeStore } from "../stores/useRecipeStore";
 import BasicHero from "../components/BasicHero.vue";
 import CategoryItem from "../components/Recipes/CategoryItem.vue";
@@ -29,6 +29,13 @@ import CategoryItem from "../components/Recipes/CategoryItem.vue";
 const props = defineProps(["id"]);
 
 const recipeStore = useRecipeStore();
+
+watch(
+  () => props.id,
+  () => {
+    recipeStore.fetchCategory(props.id);
+  }
+);
 
 const category = computed(
   () => props.id.charAt(0).toUpperCase() + props.id.slice(1)
