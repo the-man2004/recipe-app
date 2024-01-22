@@ -1,14 +1,22 @@
 <template>
-  <div class="recipe-container">
-    <h2>Recipe</h2>
+  <div v-if="recipeStore.specificRecipe !== null" class="recipe-container">
     <p>{{ props.id }}</p>
   </div>
 </template>
 
 <script setup>
+import { computed, onMounted } from "vue";
+import { useRecipeStore } from "../stores/useRecipeStore";
+
 const props = defineProps(["id"]);
 
-console.log(props.id);
+const recipeStore = useRecipeStore();
+
+const thumbnail = computed(() => recipeStore.specificRecipeObj.strMealThumb);
+
+onMounted(() => {
+  recipeStore.fetchSpecificRecipe(props.id);
+});
 </script>
 
 <style scoped>
