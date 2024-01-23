@@ -6,13 +6,20 @@
     </div>
     <div>
       <h3>Ingredients</h3>
-      <ul>
-        <li v-for="ingredient in ingredients" :key="ingredient">
+      <div class="divider"></div>
+      <ul class="ingredient-container">
+        <li
+          v-for="ingredient in ingredients"
+          :key="ingredient"
+          class="ingredient"
+        >
           {{ ingredient }}
+          <span>1 gram</span>
         </li>
       </ul>
       <div>
         <h3>Instructions</h3>
+        <div class="divider"></div>
         <p class="instructions">{{ instructions }}</p>
       </div>
     </div>
@@ -27,17 +34,11 @@ const props = defineProps(["id"]);
 
 const recipeStore = useRecipeStore();
 
-const recipeName = computed(() => recipeStore.specificRecipeObj.strMeal);
-const thumbnail = computed(() => recipeStore.specificRecipeObj.strMealThumb);
-const instructions = computed(
-  () => recipeStore.specificRecipeObj.strInstructions
-);
-
-const ingredients = computed(() => {
+const filterVariables = (param) => {
   let ingredientArray = [];
 
   for (const key in recipeStore.specificRecipe) {
-    if (key.startsWith("strIngredient")) {
+    if (key.startsWith(param)) {
       ingredientArray.push(recipeStore.specificRecipe[key]);
     }
   }
@@ -48,6 +49,16 @@ const ingredients = computed(() => {
   console.log(ingredientArray);
 
   return finalIngredientArray;
+};
+
+const recipeName = computed(() => recipeStore.specificRecipeObj.strMeal);
+const thumbnail = computed(() => recipeStore.specificRecipeObj.strMealThumb);
+const instructions = computed(
+  () => recipeStore.specificRecipeObj.strInstructions
+);
+
+const ingredients = computed(() => {
+  return filterVariables("strIngredient");
 });
 
 onMounted(() => {
@@ -79,8 +90,35 @@ h3 {
   text-align: center;
 }
 
+.ingredient-container {
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.ingredient {
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  background: var(--dark-color);
+
+  list-style: none;
+}
+
+.ingredient span {
+  display: block;
+  font-size: 0.7rem;
+  opacity: 0.5;
+}
+
 .instructions {
   white-space: pre-wrap;
+}
+
+.divider {
+  height: 3px;
+  width: 100%;
+  background: var(--dark-color);
 }
 
 @media (min-width: 40rem) {
