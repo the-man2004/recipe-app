@@ -2,7 +2,9 @@
   <div v-if="recipeStore.specificRecipe !== null" class="recipe-container">
     <div>
       <img :src="thumbnail" alt="" />
-      <h2 class="recipe-name">{{ recipeName }}</h2>
+      <a :href="recipeLink" class="title-link">
+        <h2 class="recipe-name">{{ recipeName }}</h2>
+      </a>
       <div class="social-links-container">
         <div class="social-links">
           <a href="https://facebook.com">
@@ -68,6 +70,7 @@ const filterVariables = (param) => {
 
 const thumbnail = computed(() => recipeStore.specificRecipeObj.strMealThumb);
 const recipeName = computed(() => recipeStore.specificRecipeObj.strMeal);
+const recipeLink = computed(() => recipeStore.specificRecipeObj.strSource);
 
 const ingredients = computed(() => {
   const ingredientsList = filterVariables("strIngredient");
@@ -107,6 +110,10 @@ onMounted(() => {
 
 img {
   width: 100%;
+}
+
+.title-link {
+  text-decoration: none;
 }
 
 h3 {
