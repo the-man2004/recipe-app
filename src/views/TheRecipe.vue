@@ -20,19 +20,21 @@
       </div>
     </div>
     <div>
-      <h3>Ingredients</h3>
-      <div class="divider"></div>
-      <ul class="ingredient-container">
-        <li
-          v-for="ingredient in ingredients"
-          :key="ingredient"
-          class="ingredient"
-        >
-          {{ ingredient[0] }}
-          <span>{{ ingredient[1] }}</span>
-        </li>
-      </ul>
       <div>
+        <h3>Ingredients</h3>
+        <div class="divider"></div>
+        <ul class="ingredient-container">
+          <li
+            v-for="ingredient in ingredients"
+            :key="ingredient"
+            class="ingredient"
+          >
+            {{ ingredient[0] }}
+            <span>{{ ingredient[1] }}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="instructions-container">
         <h3>Instructions</h3>
         <div class="divider"></div>
         <p class="instructions">{{ instructions }}</p>
@@ -98,6 +100,7 @@ onMounted(() => {
   margin: 5rem auto 0 auto;
   padding: 0 1rem;
   max-width: 80rem;
+  min-height: 100vh;
 }
 
 .recipe-name {
@@ -106,10 +109,13 @@ onMounted(() => {
   font-size: 2rem;
   text-align: center;
   color: var(--accent-color);
+
+  transition: all 200ms ease;
 }
 
 img {
   width: 100%;
+  aspect-ratio: 1 / 1;
 }
 
 .title-link {
@@ -178,6 +184,10 @@ h3 {
   opacity: 0.5;
 }
 
+.instructions-container {
+  padding-bottom: 3rem;
+}
+
 .instructions {
   white-space: pre-wrap;
 }
@@ -186,6 +196,10 @@ h3 {
   height: 3px;
   width: 100%;
   background: var(--dark-color);
+}
+
+.recipe-name:hover {
+  transform: translateY(0.3rem);
 }
 
 @media (min-width: 40rem) {
