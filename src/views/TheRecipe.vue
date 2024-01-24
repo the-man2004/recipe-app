@@ -3,6 +3,19 @@
     <div>
       <img :src="thumbnail" alt="" />
       <h2 class="recipe-name">{{ recipeName }}</h2>
+      <div class="social-links-container">
+        <div class="social-links">
+          <a href="https://facebook.com">
+            <i class="fa-brands fa-facebook link"></i>
+          </a>
+          <a href="https://instagram.com">
+            <i class="fa-brands fa-instagram link"></i>
+          </a>
+          <a href="https://pinterest.com">
+            <i class="fa-brands fa-pinterest link"></i>
+          </a>
+        </div>
+      </div>
     </div>
     <div>
       <h3>Ingredients</h3>
@@ -44,18 +57,17 @@ const filterVariables = (param) => {
   }
 
   // Removing empty values
-  const finalIngredientArray = ingredientArray.filter((value) => value !== "");
+  const finalIngredientArray = ingredientArray.filter(
+    (value) => value !== "" && value !== null
+  );
 
   console.log(finalIngredientArray);
 
   return finalIngredientArray;
 };
 
-const recipeName = computed(() => recipeStore.specificRecipeObj.strMeal);
 const thumbnail = computed(() => recipeStore.specificRecipeObj.strMealThumb);
-const instructions = computed(
-  () => recipeStore.specificRecipeObj.strInstructions
-);
+const recipeName = computed(() => recipeStore.specificRecipeObj.strMeal);
 
 const ingredients = computed(() => {
   const ingredientsList = filterVariables("strIngredient");
@@ -69,6 +81,9 @@ const ingredients = computed(() => {
 
   return finalIngredients;
 });
+const instructions = computed(
+  () => recipeStore.specificRecipeObj.strInstructions
+);
 
 onMounted(() => {
   recipeStore.fetchSpecificRecipe(props.id);
@@ -97,6 +112,42 @@ img {
 h3 {
   margin-top: 0;
   text-align: center;
+}
+
+.social-links {
+  margin-bottom: 2rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+  display: flex;
+  gap: 0.5rem;
+
+  /* background: var(--primary); */
+}
+
+.social-links a {
+  color: var(--secondary-color);
+}
+
+.social-links::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    var(--accent-color) 0%,
+    var(--accent-color) 35%,
+    rgba(0, 0, 0, 0) 35%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0) 65%,
+    var(--accent-color) 65%,
+    var(--accent-color) 100%
+  );
 }
 
 .ingredient-container {
