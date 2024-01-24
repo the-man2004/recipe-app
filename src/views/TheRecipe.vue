@@ -13,8 +13,8 @@
           :key="ingredient"
           class="ingredient"
         >
-          {{ ingredient }}
-          <span>1 gram</span>
+          {{ ingredient[0] }}
+          <span>{{ ingredient[1] }}</span>
         </li>
       </ul>
       <div>
@@ -46,7 +46,7 @@ const filterVariables = (param) => {
   // Removing empty values
   const finalIngredientArray = ingredientArray.filter((value) => value !== "");
 
-  console.log(ingredientArray);
+  console.log(finalIngredientArray);
 
   return finalIngredientArray;
 };
@@ -58,7 +58,16 @@ const instructions = computed(
 );
 
 const ingredients = computed(() => {
-  return filterVariables("strIngredient");
+  const ingredientsList = filterVariables("strIngredient");
+  const measurements = filterVariables("strMeasure");
+
+  let finalIngredients = [];
+
+  for (let i = 0; i < ingredientsList.length; i++) {
+    finalIngredients.push([ingredientsList[i], measurements[i]]);
+  }
+
+  return finalIngredients;
 });
 
 onMounted(() => {
