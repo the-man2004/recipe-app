@@ -1,6 +1,6 @@
 <template>
-  <div v-if="recipeStore.specificRecipe !== null" class="recipe-container">
-    <div>
+  <div class="recipe-container">
+    <div v-if="recipeStore.specificRecipe !== null">
       <img :src="thumbnail" alt="" />
       <a :href="recipeLink" class="title-link">
         <h2 class="recipe-name">{{ recipeName }}</h2>
@@ -19,7 +19,7 @@
         </div>
       </div>
     </div>
-    <div>
+    <div v-if="recipeStore.specificRecipe !== null">
       <div>
         <h3>Ingredients</h3>
         <div class="divider"></div>
@@ -100,7 +100,7 @@ onMounted(() => {
   margin: 5rem auto 0 auto;
   padding: 0 1rem;
   max-width: 80rem;
-  min-height: 100vh;
+  min-height: calc(100vh - 5rem);
 }
 
 .recipe-name {

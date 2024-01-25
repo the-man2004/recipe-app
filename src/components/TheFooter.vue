@@ -19,7 +19,7 @@
 
 <style scoped>
 footer {
-  margin: 2rem 0 0 0;
+  margin: 0;
   background: var(--dark-color);
 }
 

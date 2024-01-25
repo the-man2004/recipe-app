@@ -68,7 +68,7 @@ h2 {
 }
 .category-container {
   padding: 0 1.5rem;
-  margin: 0 auto;
+  margin: 0 auto 3rem auto;
   max-width: 80rem;
 }
 

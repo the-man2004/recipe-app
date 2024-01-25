@@ -1,21 +1,23 @@
 <template>
-  <basic-hero />
-  <div class="recipes">
-    <div class="bread-crumbs">
-      <span>
-        <router-link to="/">Home</router-link>
-      </span>
-      >> <span>Recipes</span> >> <span>{{ category }}</span>
-    </div>
-    <h2 class="category">{{ category }}</h2>
-    <div>
-      <ul class="recipes-container">
-        <category-item
-          v-for="recipe in recipeStore.categoryRecipesObj"
-          :recipe="recipe"
-          :key="recipe.idMeal"
-        />
-      </ul>
+  <div class="recipes-wrapper">
+    <basic-hero />
+    <div class="recipes">
+      <div class="bread-crumbs">
+        <span>
+          <router-link to="/">Home</router-link>
+        </span>
+        >> <span>Recipes</span> >> <span>{{ category }}</span>
+      </div>
+      <h2 class="category">{{ category }}</h2>
+      <div>
+        <ul class="recipes-container">
+          <category-item
+            v-for="recipe in recipeStore.categoryRecipesObj"
+            :recipe="recipe"
+            :key="recipe.idMeal"
+          />
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -47,6 +49,10 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.recipes-wrapper {
+  min-height: 100vh;
+}
+
 .recipes {
   margin: 0 auto;
   padding: 0 1rem;
@@ -80,6 +86,7 @@ span {
 /* Recipe conntainer styling */
 .recipes-container {
   padding: 0;
+  margin-bottom: 3rem;
 }
 
 @media (min-width: 25rem) {
