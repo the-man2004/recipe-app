@@ -92,7 +92,7 @@ const handleClick = (event) => {
 }
 
 .backdrop {
-  position: absolute;
+  position: fixed;
   inset: 0;
   background: var(--primary-color);
   opacity: 0.4;
@@ -123,7 +123,7 @@ const handleClick = (event) => {
 
 nav {
   padding: 0 1.5rem;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   width: 70vw;
