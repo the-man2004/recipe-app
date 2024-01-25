@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <nav>
-      <router-link class="link home-link" to="/">Home</router-link>
+      <router-link class="link home-link" to="/">Delicious Foods</router-link>
       <div class="links-container">
         <router-link class="link category-link" to="/recipes/dessert"
           >Dessert</router-link
@@ -89,9 +89,13 @@ nav {
 }
 
 .home-link {
+  font-family: "Playball", sans-serif;
+  font-size: 1.5rem;
   font-weight: 800;
-  text-decoration: underline;
   text-decoration-thickness: 2px;
+
+  color: var(--accent-color);
+  text-shadow: 1px 1px 2px var(--primary-color);
 }
 
 .social-links {
