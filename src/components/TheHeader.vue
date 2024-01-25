@@ -59,6 +59,8 @@ import MobileNavbar from "./MobileNavbar.vue";
   left: 0;
   right: 0;
   z-index: 100;
+
+  box-shadow: 0 3px 10px var(--primary-color);
 }
 
 nav {
