@@ -1,7 +1,9 @@
 <template>
   <footer>
     <div>
-      <router-link to="/" class="home-link">Delicious Foods</router-link>
+      <router-link @click="scrollToTop" to="/" class="home-link"
+        >Delicious Foods</router-link
+      >
       <div class="social-links">
         <a href="https://facebook.com">
           <i class="fa-brands fa-facebook link"></i>
@@ -16,6 +18,12 @@
     </div>
   </footer>
 </template>
+
+<script setup>
+const scrollToTop = () => {
+  window.scrollTo(0, 0);
+};
+</script>
 
 <style scoped>
 footer {

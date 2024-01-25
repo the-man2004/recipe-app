@@ -4,7 +4,7 @@
     <div class="recipes">
       <div class="bread-crumbs">
         <span>
-          <router-link to="/">Home</router-link>
+          <router-link @click="scrollToTop" to="/">Home</router-link>
         </span>
         >> <span>Recipes</span> >> <span>{{ category }}</span>
       </div>
@@ -42,6 +42,10 @@ watch(
 const category = computed(
   () => props.id.charAt(0).toUpperCase() + props.id.slice(1)
 );
+
+const scrollToTop = () => {
+  window.scrollTo(0, 0);
+};
 
 onMounted(() => {
   recipeStore.fetchCategory(props.id);

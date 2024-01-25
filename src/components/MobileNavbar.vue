@@ -11,36 +11,63 @@
     <transition name="slide-in">
       <nav v-if="isNavOpen" @click="handleClick($event)">
         <div>
-          <router-link class="link home-link" to="/"
+          <router-link @click="scrollToTop" class="link home-link" to="/"
             >Delicious Foods</router-link
           >
         </div>
         <div class="category-links">
-          <router-link class="link category-link" to="/recipes/dessert"
+          <router-link
+            @click="scrollToTop"
+            class="link category-link"
+            to="/recipes/dessert"
             >Dessert</router-link
           >
-          <router-link class="link category-link" to="/recipes/breakfast"
+          <router-link
+            @click="scrollToTop"
+            class="link category-link"
+            to="/recipes/breakfast"
             >Breakfast</router-link
           >
-          <router-link class="link category-link" to="/recipes/seafood"
+          <router-link
+            @click="scrollToTop"
+            class="link category-link"
+            to="/recipes/seafood"
             >Seafood</router-link
           >
-          <router-link class="link category-link" to="/recipes/starter"
+          <router-link
+            @click="scrollToTop"
+            class="link category-link"
+            to="/recipes/starter"
             >Starter</router-link
           >
-          <router-link class="link category-link" to="/recipes/side"
+          <router-link
+            @click="scrollToTop"
+            class="link category-link"
+            to="/recipes/side"
             >Side</router-link
           >
-          <router-link class="link category-link" to="/recipes/vegan"
+          <router-link
+            @click="scrollToTop"
+            class="link category-link"
+            to="/recipes/vegan"
             >Vegan</router-link
           >
-          <router-link class="link category-link" to="/recipes/chicken"
+          <router-link
+            @click="scrollToTop"
+            class="link category-link"
+            to="/recipes/chicken"
             >Chicken</router-link
           >
-          <router-link class="link category-link" to="/recipes/beef"
+          <router-link
+            @click="scrollToTop"
+            class="link category-link"
+            to="/recipes/beef"
             >Beef</router-link
           >
-          <router-link class="link category-link" to="/recipes/pasta"
+          <router-link
+            @click="scrollToTop"
+            class="link category-link"
+            to="/recipes/pasta"
             >Pasta</router-link
           >
         </div>
@@ -73,6 +100,10 @@ const handleClick = (event) => {
   if (event.target.nodeName === "A") {
     toggleModal();
   }
+};
+
+const scrollToTop = () => {
+  window.scrollTo(0, 0);
 };
 </script>
 

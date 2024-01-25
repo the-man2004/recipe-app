@@ -1,6 +1,6 @@
 <template>
   <li class="recipe">
-    <router-link :to="link">
+    <router-link @click="scrollToTop" :to="link">
       <img :src="thumbnail" alt="" />
       <p>{{ recipeTitle }}</p>
       <div class="social-links-container">
@@ -30,6 +30,10 @@ const link = computed(() => {
 });
 const thumbnail = computed(() => props.recipe.strMealThumb);
 const recipeTitle = computed(() => props.recipe.strMeal);
+
+const scrollToTop = () => {
+  window.scrollTo(0, 0);
+};
 </script>
 
 <style scoped>
