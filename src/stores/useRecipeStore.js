@@ -8,6 +8,7 @@ export const useRecipeStore = defineStore("recipeStore", {
       specificRecipe: null,
 
       categoryError: null,
+      specificRecipeError: null,
     };
   },
   getters: {
@@ -21,7 +22,6 @@ export const useRecipeStore = defineStore("recipeStore", {
       try {
         const response = await fetch(
           `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
-          // `www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
         );
 
         if (!response.ok) {
@@ -61,6 +61,8 @@ export const useRecipeStore = defineStore("recipeStore", {
     },
     // for Fetching a specific recipe
     async fetchSpecificRecipe(id) {
+      this.specificRecipeError = null;
+
       try {
         const response = await fetch(
           `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
@@ -76,7 +78,8 @@ export const useRecipeStore = defineStore("recipeStore", {
 
         console.log(responseData);
       } catch (err) {
-        console.warn(err);
+        console.warn(err.message);
+        this.specificRecipeError = err.message;
       }
     },
   },

@@ -1,6 +1,6 @@
 <template>
-  <div class="recipe-container">
-    <div v-if="recipeStore.specificRecipe !== null">
+  <div v-if="recipeStore.specificRecipe !== null" class="recipe-container">
+    <div>
       <img :src="thumbnail" alt="" />
       <a :href="recipeLink" class="title-link">
         <h2 class="recipe-name">{{ recipeName }}</h2>
@@ -19,7 +19,7 @@
         </div>
       </div>
     </div>
-    <div v-if="recipeStore.specificRecipe !== null">
+    <div>
       <div>
         <h3>Ingredients</h3>
         <div class="divider"></div>
@@ -41,11 +41,13 @@
       </div>
     </div>
   </div>
+  <RecipeError v-else @retry="recipeStore.fetchSpecificRecipe(props.id)" />
 </template>
 
 <script setup>
 import { computed, onMounted } from "vue";
 import { useRecipeStore } from "../stores/useRecipeStore";
+import RecipeError from "@/components/Error/RecipeError.vue";
 
 const props = defineProps(["id"]);
 
