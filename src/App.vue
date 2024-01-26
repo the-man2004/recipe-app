@@ -23,6 +23,7 @@ import TheFooter from "./components/TheFooter.vue";
   --accent-color: rgb(229, 183, 59);
   --dark-color: rgb(36, 36, 36);
   --light-color: gray;
+  --error-color: brown;
 }
 
 html {

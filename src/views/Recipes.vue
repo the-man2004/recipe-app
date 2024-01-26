@@ -8,8 +8,8 @@
         </span>
         >> <span>Recipes</span> >> <span>{{ category }}</span>
       </div>
-      <h2 class="category">{{ category }}</h2>
-      <div>
+      <div v-if="recipeStore.categoryError === null">
+        <h2 class="category">{{ category }}</h2>
         <ul class="recipes-container">
           <category-item
             v-for="recipe in recipeStore.categoryRecipesObj"
@@ -18,6 +18,7 @@
           />
         </ul>
       </div>
+      <CategoryError v-else @retry="recipeStore.fetchCategory(props.id)" />
     </div>
   </div>
 </template>
@@ -27,6 +28,7 @@ import { computed, onMounted, watch } from "vue";
 import { useRecipeStore } from "../stores/useRecipeStore";
 import BasicHero from "../components/BasicHero.vue";
 import CategoryItem from "../components/Recipes/CategoryItem.vue";
+import CategoryError from "../components/Error/CategoryError.vue";
 
 const props = defineProps(["id"]);
 
