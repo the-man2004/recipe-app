@@ -20,8 +20,8 @@ export const useRecipeStore = defineStore("recipeStore", {
 
       try {
         const response = await fetch(
-          // `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
-          `www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
+          `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
+          // `www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
         );
 
         if (!response.ok) {
