@@ -3,6 +3,8 @@ import { defineStore } from "pinia";
 export const useRecipeStore = defineStore("recipeStore", {
   state: () => {
     return {
+      isLoading: false,
+
       miscellaneousRecipes: null,
       categoryRecipes: null,
       specificRecipe: null,
@@ -17,6 +19,7 @@ export const useRecipeStore = defineStore("recipeStore", {
   },
   actions: {
     async fetchCategory(category) {
+      this.isLoading = true;
       this.categoryError = null;
 
       try {
@@ -32,11 +35,14 @@ export const useRecipeStore = defineStore("recipeStore", {
 
         this.categoryRecipes = responseData.meals;
         console.log(this.categoryRecipes);
+
+        this.isLoading = false;
       } catch (err) {
         console.warn(err.message);
 
         // Set categoryError = err.message
         this.categoryError = err.message;
+        this.isLoading = false;
       }
     },
     // For fetching Miscellaneous recipes
@@ -61,6 +67,7 @@ export const useRecipeStore = defineStore("recipeStore", {
     },
     // for Fetching a specific recipe
     async fetchSpecificRecipe(id) {
+      this.isLoading = true;
       this.specificRecipeError = null;
 
       try {
@@ -77,9 +84,13 @@ export const useRecipeStore = defineStore("recipeStore", {
         this.specificRecipe = responseData.meals[0];
 
         console.log(responseData);
+
+        this.isLoading = false;
       } catch (err) {
         console.warn(err.message);
         this.specificRecipeError = err.message;
+
+        this.isLoading = false;
       }
     },
   },

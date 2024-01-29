@@ -8,6 +8,7 @@
         </span>
         >> <span>Recipes</span> >> <span>{{ category }}</span>
       </div>
+
       <div v-if="recipeStore.categoryError === null">
         <h2 class="category">{{ category }}</h2>
         <ul class="recipes-container">
@@ -19,6 +20,7 @@
         </ul>
       </div>
       <CategoryError v-else @retry="recipeStore.fetchCategory(props.id)" />
+      <LoadingSpinner v-if="recipeStore.isLoading === true" />
     </div>
   </div>
 </template>
@@ -29,6 +31,7 @@ import { useRecipeStore } from "../stores/useRecipeStore";
 import BasicHero from "../components/BasicHero.vue";
 import CategoryItem from "../components/Recipes/CategoryItem.vue";
 import CategoryError from "../components/Error/CategoryError.vue";
+import LoadingSpinner from "../components/LoadingSpinner.vue";
 
 const props = defineProps(["id"]);
 
