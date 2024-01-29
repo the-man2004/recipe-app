@@ -41,13 +41,20 @@
       </div>
     </div>
   </div>
-  <RecipeError v-else @retry="recipeStore.fetchSpecificRecipe(props.id)" />
+  <div class="loading-container">
+    <LoadingSpinner v-if="recipeStore.isLoading === true" />
+  </div>
+  <RecipeError
+    v-if="recipeStore.specificRecipeError !== null"
+    @retry="recipeStore.fetchSpecificRecipe(props.id)"
+  />
 </template>
 
 <script setup>
 import { computed, onMounted } from "vue";
 import { useRecipeStore } from "../stores/useRecipeStore";
-import RecipeError from "@/components/Error/RecipeError.vue";
+import RecipeError from "../components/Error/RecipeError.vue";
+import LoadingSpinner from "../components/LoadingSpinner.vue";
 
 const props = defineProps(["id"]);
 
@@ -202,6 +209,11 @@ h3 {
 
 .recipe-name:hover {
   transform: translateY(0.3rem);
+}
+
+.loading-container {
+  padding-top: 7rem;
+  min-height: 100vh;
 }
 
 @media (min-width: 40rem) {
