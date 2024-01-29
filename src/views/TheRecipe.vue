@@ -41,8 +41,8 @@
       </div>
     </div>
   </div>
-  <div class="loading-container">
-    <LoadingSpinner v-if="recipeStore.isLoading === true" />
+  <div v-if="recipeStore.isLoading === true" class="loading-container">
+    <LoadingSpinner />
   </div>
   <RecipeError
     v-if="recipeStore.specificRecipeError !== null"
